@@ -6,9 +6,12 @@
     "renderer": "react",
     "apiVersion": "v1",
     "generator": ">=1.10.0 <2.0.0",
-    "supportedProtocols": ["mqtt"]
+    "supportedProtocols": [
+      "mqtt"
+    ]
   },
   "dependencies": {
+    "@asyncapi/generator": "^1.17.13",
     "@asyncapi/generator-react-sdk": "^0.2.25"
   },
   "devDependencies": {
