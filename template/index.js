@@ -6,7 +6,7 @@ export default function ({ asyncapi, params }) {
     <File name="client.py">
       <Text newLines={2}>import paho.mqtt.client as mqtt</Text>
 
-      <Text newLines={2}>mqttBroker = "{asyncapi.servers().get(params.server).url()}"</Text>
+      <Text newLines={2}>mqttBroker = "test.mosquitto.org"</Text>
 
       <Text newLines={2}>class {asyncapi.info().title().replaceAll(' ', '')}Client:</Text>
 
