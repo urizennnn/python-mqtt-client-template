@@ -1,7 +1,24 @@
+import { File, Text } from '@asyncapi/generator-react-sdk'
+import { TopicFunction } from '../components/TopicFunction'
 
-import { File } from '@asyncapi/generator-react-sdk'
+export default function ({ asyncapi, params }) {
+  return (
+    <File name="client.py">
+      <Text newLines={2}>import paho.mqtt.client as mqtt</Text>
 
-export default function ({ asyncapi }) {
+      <Text newLines={2}>mqttBroker = "{asyncapi.servers().get(params.server).url()}"</Text>
 
-  return <File name="client.py">{asyncapi.info().title()}</File>
+      <Text newLines={2}>class {asyncapi.info().title().replaceAll(' ', '')}Client:</Text>
+
+      <Text indent={2} newLines={2}>
+        {`def __init__(self):
+            self.client = mqtt.Client()
+            self.client.connect(mqttBroker)`}
+      </Text>
+
+      <Text indent={2}>
+        <TopicFunction channels={asyncapi.channels().filterByReceive()} />
+      </Text>
+    </File>
+  )
 }
