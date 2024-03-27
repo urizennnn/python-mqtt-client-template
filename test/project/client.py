@@ -5,7 +5,7 @@ mqttBroker = "test.mosquitto.org"
 class TemperatureServiceClient:
 
   def __init__(self):
-              self.client = mqtt.Client()
+              self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
               self.client.connect(mqttBroker)
 
   def sendTemperatureDrop(self, id):
